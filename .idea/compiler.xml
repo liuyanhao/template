@@ -6,13 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HRADMIN" />
-        <module name="MVNFHM" />
+        <module name="TEMPLATE" />
+        <module name="template" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="HRADMIN" target="1.5" />
-      <module name="MVNFHM" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
