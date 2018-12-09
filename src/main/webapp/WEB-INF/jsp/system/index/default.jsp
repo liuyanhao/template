@@ -35,10 +35,10 @@
 									<i class="ace-icon fa fa-times"></i>
 								</button>
 								<i class="ace-icon fa fa-check green"></i>
-								欢迎使用 LXC template 管理系统&nbsp;&nbsp;
+								欢迎使用 皮草之家后台系统&nbsp;&nbsp;
 								<strong class="green">
 									&nbsp;QQ:1094921525
-									<a href="http://www.hradmin.com" target="_blank"><small>(&nbsp;www.lxctemplate.com&nbsp;)</small></a>
+									<a href="http://www.tooxiugroup.com" target="_blank"><small>(&nbsp;www.tooxiugroup.com&nbsp;)</small></a>
 								</strong>
 							</div>
 							
@@ -51,11 +51,11 @@
 						        // 指定图表的配置项和数据
 								var option = {
 						            title: {
-						                text: 'LXC template用户统计'
+						                text: '皮草之家后台系统用户统计'
 						            },
 						            tooltip: {},
 						            xAxis: {
-						                data: ["系统用户","系统员员工"]
+						                data: ["系统用户","系统会员"]
 						            },
 						            yAxis: {},
 						            series: [

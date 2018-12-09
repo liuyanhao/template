@@ -6,9 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TEMPLATE" />
         <module name="template" />
+        <module name="TEMPLATE" />
+        <module name="TOOXIU" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TEMPLATE" target="1.5" />
+      <module name="TOOXIU" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

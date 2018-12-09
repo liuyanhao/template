@@ -260,7 +260,6 @@ public class LoginController extends BaseController {
 	
 	/**
 	 * 用户注销
-	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value="/logout")
@@ -291,7 +290,6 @@ public class LoginController extends BaseController {
 	}
 	
 	/**获取用户权限
-	 * @param session
 	 * @return
 	 */
 	public Map<String, String> getUQX(String USERNAME){

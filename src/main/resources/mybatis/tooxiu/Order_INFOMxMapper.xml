@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Order_INFOMxMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		TB_ORDER_INFOMX
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		COMMODITY,	
+		PRICE,	
+		AMOUNT,	
+		CREATE_USER,	
+		CREATE_TIME,	
+		UPDATE_USER,	
+		UPDATE_TIME,	
+		COMMODITY_INFO,	
+		IS_DELETE,	
+		COMMODITY_ID,	
+		BODY,	
+		BZ,	
+		ORDER_INFOMX_ID,
+		ORDER_INFO_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{COMMODITY},	
+		#{PRICE},	
+		#{AMOUNT},	
+		#{CREATE_USER},	
+		#{CREATE_TIME},	
+		#{UPDATE_USER},	
+		#{UPDATE_TIME},	
+		#{COMMODITY_INFO},	
+		#{IS_DELETE},	
+		#{COMMODITY_ID},	
+		#{BODY},	
+		#{BZ},	
+		#{ORDER_INFOMX_ID},
+		#{ORDER_INFO_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ORDER_INFOMX_ID = #{ORDER_INFOMX_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			COMMODITY = #{COMMODITY},
+			PRICE = #{PRICE},
+			AMOUNT = #{AMOUNT},
+			COMMODITY_INFO = #{COMMODITY_INFO},
+			COMMODITY_ID = #{COMMODITY_ID},
+			BODY = #{BODY},
+			BZ = #{BZ},
+		ORDER_INFOMX_ID = ORDER_INFOMX_ID
+		where 
+		ORDER_INFOMX_ID = #{ORDER_INFOMX_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			ORDER_INFOMX_ID = #{ORDER_INFOMX_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+		ORDER_INFO_ID = #{pd.ORDER_INFO_ID}
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ORDER_INFOMX_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- 查询明细总数 -->
+	<select id="findCount" parameterType="pd" resultType="pd">
+		select
+			count(*) zs
+		from 
+			<include refid="tableName"></include>
+		where
+			ORDER_INFO_ID = #{ORDER_INFO_ID}
+	</select>
+	
+	<!-- lxc 1094921525qq -->
+</mapper>
