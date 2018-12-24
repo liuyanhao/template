@@ -71,7 +71,7 @@ public class ${objectName}Controller extends BaseController {
 	}
 	
 	/**删除
-	 * @param out
+	 * @param ${objectNameUpper}_ID
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/delete")
@@ -142,6 +142,7 @@ public class ${objectName}Controller extends BaseController {
 	/**
 	 * 显示列表ztree
 	 * @param model
+     * @param ${objectNameUpper}_ID
 	 * @return
 	 */
 	@RequestMapping(value="/listTree")

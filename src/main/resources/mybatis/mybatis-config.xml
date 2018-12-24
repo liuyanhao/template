@@ -15,7 +15,8 @@
 		<typeAlias type="com.lxc.entity.system.Menu" alias="Menu"/>
 		<typeAlias type="com.lxc.entity.system.Dictionaries" alias="Dictionaries"/>
 		<typeAlias type="com.lxc.entity.system.Department" alias="Department"/>
-		
+		<typeAlias type="com.lxc.entity.system.Department" alias="Department"/>
+		<typeAlias type="com.lxc.entity.tooxiu.ImageType" alias="ImageType"/>
 		<!-- 这里添加生成的实体类 -->
 		
 		

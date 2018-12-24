@@ -1,1 +1,1 @@
-yes,lxc,LXC TEMPLATE,lxc,20,lxc,1,lxc,1
+yes,lxc,Tooxiu,lxc,20,lxc,1,lxc,1

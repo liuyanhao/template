@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Order_INFOMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		TB_ORDER_INFO
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		OUT_TRADE_NO,	
+		CREATE_USER,	
+		CREATE_TIME,	
+		UPDATE_USER,	
+		UPDATE_TIME,	
+		IS_DELETE,	
+		ORDER_STATUS,
+		TOTAL_FEE,	
+		BZ,	
+		PAY_TYPE,	
+		PAY_TIME,	
+		PAY_ACCOUNT,	
+		APPID,	
+		MCH_ID,	
+		SIGN_TYPE,	
+		SIGN,	
+		FEE_TYPE,	
+		GOODS_TAG,	
+		SPBILL_CREATE_IP,	
+		TIME_START,	
+		TIME_EXPIRE,	
+		AUTH_CODE,	
+		RECEIPT,	
+		DEVICE_INFO,	
+		NONCE_STR,	
+		ORDER_INFO_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{OUT_TRADE_NO},	
+		#{CREATE_USER},	
+		#{CREATE_TIME},	
+		#{UPDATE_USER},	
+		#{UPDATE_TIME},	
+		#{IS_DELETE},	
+		#{ORDER_STATUS},
+		#{TOTAL_FEE},	
+		#{BZ},	
+		#{PAY_TYPE},	
+		#{PAY_TIME},	
+		#{PAY_ACCOUNT},	
+		#{APPID},	
+		#{MCH_ID},	
+		#{SIGN_TYPE},	
+		#{SIGN},	
+		#{FEE_TYPE},	
+		#{GOODS_TAG},	
+		#{SPBILL_CREATE_IP},	
+		#{TIME_START},	
+		#{TIME_EXPIRE},	
+		#{AUTH_CODE},	
+		#{RECEIPT},	
+		#{DEVICE_INFO},	
+		#{NONCE_STR},	
+		#{ORDER_INFO_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ORDER_INFO_ID = #{ORDER_INFO_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			OUT_TRADE_NO = #{OUT_TRADE_NO},
+		ORDER_STATUS = #{ORDER_STATUS},
+			TOTAL_FEE = #{TOTAL_FEE},
+			BZ = #{BZ},
+			PAY_TYPE = #{PAY_TYPE},
+			PAY_TIME = #{PAY_TIME},
+			PAY_ACCOUNT = #{PAY_ACCOUNT},
+			APPID = #{APPID},
+			MCH_ID = #{MCH_ID},
+			SIGN_TYPE = #{SIGN_TYPE},
+			FEE_TYPE = #{FEE_TYPE},
+			GOODS_TAG = #{GOODS_TAG},
+			SPBILL_CREATE_IP = #{SPBILL_CREATE_IP},
+			TIME_EXPIRE = #{TIME_EXPIRE},
+			AUTH_CODE = #{AUTH_CODE},
+			NONCE_STR = #{NONCE_STR},
+		ORDER_INFO_ID = ORDER_INFO_ID
+		where 
+		ORDER_INFO_ID = #{ORDER_INFO_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			ORDER_INFO_ID = #{ORDER_INFO_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 1=1
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ORDER_INFO_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- lxc 1094921525qq -->
+</mapper>
